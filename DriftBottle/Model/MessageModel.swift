@@ -15,23 +15,35 @@ protocol MessageManagerDelegate {
 
 struct MessageModel {
     var delegate: MessageManagerDelegate?
-    
-    
     let baseURL = "http://localhost:8080/api/drift_bottle/v1/"
     
-    
     func dropBottle(with message: String) {
-        let url = baseURL + "drop"
-        print("dropping message:", message)
-        self.delegate?.didDropBottle(message: "Message dropped!")
+        if let url = URL(string: baseURL + "drop") {
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let json: [String: Any] = ["message": message]
+            let jsonData = try? JSONSerialization.data(withJSONObject: json)
+            
+            request.httpBody = jsonData
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let error = error {
+                    self.delegate?.didFailWithError(error)
+                    return
+                }
+                if let safeData = data {
+                    if let message = parseJSON(safeData) {
+                        self.delegate?.didDropBottle(message: message)
+                    }
+                }
+            }
+            task.resume()
+        }
     }
     
     func pickBottle() {
-        let url = baseURL + "pickup"
-        print("picking up message")
-        self.delegate?.didPickBottle(message: "Message picked!")
-        
-        if let url = URL(string: url) {
+        if let url = URL(string: baseURL + "pickup") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { (data, response, error) in
                 if error != nil {
@@ -57,5 +69,4 @@ struct MessageModel {
             return nil
         }
     }
-    
 }

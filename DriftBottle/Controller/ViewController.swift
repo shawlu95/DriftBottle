@@ -42,9 +42,27 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        messageModel.delegate = self
     }
-
-
 }
 
+//MARK: - MessageManagerDelegate
+extension ViewController : MessageManagerDelegate {
+    func didFailWithError(_ error: Error) {
+        print(error)
+    }
+    
+    func didDropBottle(message: String) {
+//        let alertController = UIAlertController(title: "Message Sent", message: nil, preferredStyle: .alert)
+//        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+//            // Code to execute when OK is tapped. Leave empty if nothing specific.
+//        }
+//        alertController.addAction(okAction)
+//        present(alertController, animated: true)
+        print(message)
+    }
+    
+    func didPickBottle(message: String) {
+        print(message)
+    }
+}
