@@ -22,8 +22,13 @@ class ViewController: UIViewController {
                 self.messageModel.dropBottle(with: textToSend)
             }
         }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Code to execute when CANCEL is tapped. Leave empty if nothing specific.
+        }
 
         alertController.addAction(sendAction)
+        alertController.addAction(cancelAction)
         present(alertController, animated: true)
     }
     
@@ -51,7 +56,6 @@ extension ViewController : MessageManagerDelegate {
             }
             alertController.addAction(okAction)
             self.present(alertController, animated: true)
-            print(message)
         }
     }
     
@@ -63,7 +67,6 @@ extension ViewController : MessageManagerDelegate {
             }
             alertController.addAction(okAction)
             self.present(alertController, animated: true)
-            print(message)
         }
     }
 }
