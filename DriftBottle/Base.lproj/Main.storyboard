@@ -53,6 +53,9 @@
                                             </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="toPickup:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kdC-fE-tNy"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
