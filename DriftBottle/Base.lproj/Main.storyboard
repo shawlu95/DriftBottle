@@ -37,6 +37,9 @@
                                             </backgroundConfiguration>
                                             <fontDescription key="titleFontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="toDrop:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0BZ-oT-Ycc"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Y3-Z5-nfk">
                                         <rect key="frame" x="0.0" y="90" width="393" height="60"/>
