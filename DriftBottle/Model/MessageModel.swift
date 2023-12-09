@@ -14,6 +14,7 @@ protocol MessageManagerDelegate {
 }
 
 struct MessageModel {
+    
     var delegate: MessageManagerDelegate?
     let baseURL = "http://localhost:8080/api/drift_bottle/v1/"
     
