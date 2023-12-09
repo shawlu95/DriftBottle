@@ -16,7 +16,8 @@ protocol MessageManagerDelegate {
 struct MessageModel {
     
     var delegate: MessageManagerDelegate?
-    let baseURL = "http://localhost:8080/api/drift_bottle/v1/"
+//    let baseURL = "http://localhost:8080/api/drift_bottle/v1/"
+    let baseURL = "https://shawlu95-sandbox-a6f73a3d16cd.herokuapp.com/api/drift_bottle/v1/"
     
     func dropBottle(with message: String) {
         if let url = URL(string: baseURL + "drop") {
