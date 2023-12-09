@@ -53,16 +53,26 @@ extension ViewController : MessageManagerDelegate {
     }
     
     func didDropBottle(message: String) {
-//        let alertController = UIAlertController(title: "Message Sent", message: nil, preferredStyle: .alert)
-//        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
-//            // Code to execute when OK is tapped. Leave empty if nothing specific.
-//        }
-//        alertController.addAction(okAction)
-//        present(alertController, animated: true)
-        print(message)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Message Sent", message: nil, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                // Code to execute when OK is tapped. Leave empty if nothing specific.
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
+            print(message)
+        }
     }
     
     func didPickBottle(message: String) {
-        print(message)
+        DispatchQueue.main.async {
+            let alertController = UIAlertController(title: "Bottle Opened", message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+                // Code to execute when OK is tapped. Leave empty if nothing specific.
+            }
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true)
+            print(message)
+        }
     }
 }
